@@ -1,4 +1,4 @@
-# SimilaritySearch
+# MXFP SimilaritySearch
 
 This application can be found at http://similaritysearch.gdb.tools/
 
