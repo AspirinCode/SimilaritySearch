@@ -1,30 +1,12 @@
 # MXFP SimilaritySearch
 
-This application can be found at http://similaritysearch.gdb.tools/
+This application is running at http://similaritysearch.gdb.tools/
 
-To run this Flask application with your own data follow the steps below (a Chemaxon license is necessary):
+The MXFP similarity search is a python Flask app which uses Annoy (Approximate Nearest Neighbors Oh Yeah, by Erik Bernhardsson, https://github.com/spotify/annoy) tho search the MXFP non-Lipinski PubChem and non-Lipinski ChEMBL chemical spaces.
 
-- Clone this repository
+In each similarity search instance, the user chooses to search non-Lipinski PubChem or non-Lipinski ChEMBL, and the priorly created correspondent Annoy file is selected. The Annoy file is used by the web app to retrieve the compound IDs of a pool of n° (user choice) of nearest neighbors. Then with a ‘pickle saved’ python dictionary, the compound IDs are associated back to the correspondent PubChem or ChEMBL SMILES. The results are displayed using SmilesDrawer.
 
-- Copy your chemaxon license in the repository folder as 'license.cxl'
-
-- This application uses Annoy (Approximate Nearest Neighbors Oh Yeah) by Erik Bernhardsson, to install it, refer to https://github.com/spotify/annoy
-
-- To run this app rdkit, flask, numpy, scikit-learn, flask_wtf, flask_restful, java, have to be installed
-
-- Calculate the MXFP of `your-data.smi`: run `java -cp 2Dtopoguassfp.jar bin.write_topoguassfp2 -i your-data.smi -o your-data.smi -scaleFactors 0.5_1_0.5_1_1_1_1` (for the source code refer to https://github.com/reymond-group/MXFP)
-
-- For both ChEMBL and PubChem, create your annoy file and the corresponding dictionary by running `python create_tree_dict.py your-file.fp your-ID-SMILES-dictionary`, where `your-file.fp` has the following format: SMILES ID MXFP, `your-ID-SMILES-dictionary` is a python dictionary saved with pickle {ID:SMILES}, and ID is an unique identifier.
-If the SMILES in your-file.fp are the ones to be visualized omit the dictionary and run `python create_tree_dict.py your-file.fp`.
-The created files are LARGE. Using 7 million molecules and MXFP leads to a 10 Gigabyte annoy file and a 1 Gigabyte dictionary. Use an appropriate folder.
-
-- Rename your annoy and dictionary files as: Non-Lipinski-ChEMBL.MXfp_dictionary, Non-Lipinski-ChEMBL.MXfp_annoy, Non-Lipinski-PubChem.MXfp_dictionary, Non-Lipinski-PubChem.MXfp_annoy
-
-- Paste the path to the created annoy file and dictionary files in 'Flask/app/functs.py' (data_path).
-
-- `python run.py` will run the application locally.
-
-A docker image (alicecapecchi/similaritysearchnew) of the application is available here https://cloud.docker.com/u/alicecapecchi/repository/docker/alicecapecchi/similaritysearchnew
+Annoy files and pickled saved python dictionaries have been created using `create_tree_dict.py`.
 
 
 
