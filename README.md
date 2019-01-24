@@ -8,7 +8,7 @@ To run this Flask application with your own data follow the steps below (a Chema
 
 - Copy your chemaxon license in the repository folder as 'license.cxl'
 
-- This application uses Annoy, to install it refer to https://github.com/spotify/annoy
+- This application uses Annoy (Approximate Nearest Neighbors Oh Yeah) by Erik Bernhardsson, to install it, refer to https://github.com/spotify/annoy
 
 - Create your annoy file and the corresponding dictionary by running `python create_tree_dict.py your-file.fp your-ID-SMILES-dictionary`, 
 where `your-file.fp` has the following format: SMILES ID MXFP, `your-ID-SMILES-dictionary` is a python dictionary saved with pickle {ID:SMILES}, and ID is an unique identifier.
