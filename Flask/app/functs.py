@@ -48,19 +48,21 @@ def similarity_search_annoy(db, smile, number_of_hits):
         list -- n NN of the query molecule according to MXfp 
     """
 
-    # path to find: Non-Lipinski-ChEMBL.MXfp_dictionary, Non-Lipinski-ChEMBL.MXfp_annoy,
+    # path: Non-Lipinski-ChEMBL.MXfp_dictionary, Non-Lipinski-ChEMBL.MXfp_annoy,
     # Non-Lipinski-PubChem.MXfp_dictionary, Non-Lipinski-PubChem.MXfp_annoy
-    data_path = '/your/similaritysearchdata/path/'
+    data_path = 'SimilaritySearchData/'
         
     fp = fp_calc(smile)
     query_fp = np.array(list(map(int, fp.split(';')))).reshape(1, -1)
     
     # MXFP is a vectors of 217 elements
     f = 217
-    u = AnnoyIndex(f, metric='manhattan')  
+    u = AnnoyIndex(f, metric='manhattan') 
+
     u.load(data_path + 'Non-Lipinski-{}.MXfp_annoy'.format(db))
     NNs = u.get_nns_by_vector(query_fp[0], int(number_of_hits), search_k=-1, include_distances=True)
     results = []
+
     findID = pickle.load(open(data_path + 'Non-Lipinski-{}.MXfp_dictionary'.format(db), 'rb'))
     
     for i, NN in enumerate(NNs[0]):
