@@ -8,5 +8,7 @@ In each similarity search instance, the user chooses to search non-Lipinski PubC
 
 Annoy files and pickled saved python dictionaries have been created using `create_tree_dict.py`.
 
+To run, the app needs a chemaxon license file
 
+The MXFP source code can be found at https://github.com/reymond-group/MXFP
 
