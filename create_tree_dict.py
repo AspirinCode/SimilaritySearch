@@ -6,8 +6,8 @@ import sys
 
 # imput: - MXFP results (SMILES ID MXFP properties) 
 #        - python dictionary of PubChem {CIDs : SMILES as in PubChem} (optional)
-# output: - imputfile_annoy
-#         - imputfile_dictionary 
+# output: - inputfile_annoy
+#         - inputfile_dictionary 
 
 findCID = {}
 
