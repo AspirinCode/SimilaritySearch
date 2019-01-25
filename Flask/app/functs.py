@@ -21,7 +21,7 @@ def fp_calc(smile):
     with open('temp_query_smiles.smi', '+w') as outFIle:
         outFIle.write(smile + ' query_ligand')
     
-    proc=sub.Popen(['java', '-cp', 'app/static/2dp/2Dtopoguassfp.jar', 'bin.write_topoguassfp2', 
+    proc=sub.Popen(['java', '-cp', 'app/static/MXFP/2Dtopoguassfp.jar', 'bin.write_topoguassfp2', 
         '-i', 'temp_query_smiles.smi', '-o', 'temp_query_ligand.fp', 
         '-scaleFactors 0.5_1_0.5_1_1_1_1'], stdout=sub.PIPE)
     proc.wait()
@@ -48,9 +48,7 @@ def similarity_search_annoy(db, smile, number_of_hits):
         list -- n NN of the query molecule according to MXfp 
     """
 
-    # path: Non-Lipinski-ChEMBL.MXfp_dictionary, Non-Lipinski-ChEMBL.MXfp_annoy,
-    # Non-Lipinski-PubChem.MXfp_dictionary, Non-Lipinski-PubChem.MXfp_annoy
-    data_path = 'SimilaritySearchData/'
+    data_path = '/SimilaritySearchData/'
         
     fp = fp_calc(smile)
     query_fp = np.array(list(map(int, fp.split(';')))).reshape(1, -1)
