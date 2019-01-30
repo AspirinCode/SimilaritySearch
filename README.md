@@ -15,4 +15,4 @@ To run the app locally:
 - Run `docker run -p 8080:5000 --mount type=bind,target=/license.cxl,source=/your/absolut/path/license.cxl  --mount type=bind,target=/SimilaritySearchData,source=/your/absolut/path/SimilaritySearchData --mount type=bind,target=/app,source=/your/absolut/path/MXFPSimilaritySearch/Flask --name similaritysearch alicecapecchi/similaritysearchnew:latest`
 - MXFP similarity search will be running at http://0.0.0.0:8080/
 
-!(MXFPSimilarit)[link]
+!(MXFPSimilaritySearchInterface)[https://cloud.gdb.tools/s/ACXc7NM3st2N3wK]
